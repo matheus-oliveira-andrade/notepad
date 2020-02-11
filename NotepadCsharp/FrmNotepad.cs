@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NotepadCsharp
@@ -39,9 +32,8 @@ namespace NotepadCsharp
         private void richTxtBText_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
-            {
                 contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
-            }
+
         }
 
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -49,9 +41,8 @@ namespace NotepadCsharp
             if (richTxtBText.Text != "")
             {
                 if (!_saved || !_fileCreate)
-                {
                     MessageSaveChanges();
-                }
+
 
                 _saved = false;
                 _fileCreate = false;
@@ -91,9 +82,7 @@ namespace NotepadCsharp
         {
 
             if (!fileCreate)
-            {
                 SalvarComo();
-            }
             else
             {
                 FileManipulator.Save(_pathFile, richTxtBText.Text);
@@ -135,9 +124,7 @@ namespace NotepadCsharp
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes))
             {
                 if (_pathFile.Equals(string.Empty))
-                {
                     SalvarComo();
-                }
                 else
                 {
                     FileManipulator.Save(_pathFile, richTxtBText.Text);
@@ -154,18 +141,16 @@ namespace NotepadCsharp
             using (PrintDialog pd = new PrintDialog())
             {
                 if (pd.ShowDialog().Equals(DialogResult.OK))
-                {
                     MessageBox.Show("Arquivo");
-                }
+
             }
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!_saved || !fileCreate)
-            {
                 MessageSaveChanges();
-            }
+
 
             Application.Exit();
         }
@@ -203,9 +188,8 @@ namespace NotepadCsharp
                 fd.Font = richTxtBText.Font;
 
                 if (fd.ShowDialog() == DialogResult.OK)
-                {
                     richTxtBText.Font = fd.Font;
-                }
+
             }
 
         }
